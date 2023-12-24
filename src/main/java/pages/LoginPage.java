@@ -6,9 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends BasePage {
-    public final String URL = "https://github.com/login";
     public LoginPage(WebDriver driver, WebDriverWait wait) {
-        super(driver, wait);
+        super(driver, wait, "https://github.com/login");
 
         driver.get(URL);
     }

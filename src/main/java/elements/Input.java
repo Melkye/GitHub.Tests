@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Input extends BaseElement {
     public Input(String xPath, WebDriver driver, WebDriverWait wait) {
-        super(xPath, driver, wait);
+        super( driver, wait, xPath);
     }
 
     public Input setText(String text) {

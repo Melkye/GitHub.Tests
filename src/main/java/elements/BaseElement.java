@@ -16,10 +16,10 @@ public class BaseElement {
     // TODO why no?
     // TODO implicit vs explicit
     protected WebDriverWait wait;
-    public BaseElement(String xPath, WebDriver driver, WebDriverWait wait) {
-        this.xPath = xPath;
+    public BaseElement(WebDriver driver, WebDriverWait wait, String xPath) {
         this.driver = driver;
         this.wait = wait;
+        this.xPath = xPath;
     }
 
     public BaseElement click() {

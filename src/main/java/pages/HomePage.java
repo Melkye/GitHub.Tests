@@ -1,5 +1,6 @@
 package pages;
 
+import com.github.dockerjava.api.model.Repository;
 import components.Header;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,11 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
 
-    public final String URL = "https://github.com";
-
     // TODO decide what to do with content depending on if logged in or not
     public HomePage(WebDriver driver, WebDriverWait wait, boolean isLoggedIn) {
-        super(driver, wait);
+        super(driver, wait, "https://github.com");
 
         driver.get(URL);
 
@@ -27,7 +26,7 @@ public class HomePage extends BasePage {
         return new Header(driver, wait);
     }
 
-    public HomePage searchText(String text) {
+    public SearchResultPage searchText(String text) {
         getHeader().getSearchButton()
                 .click();
 
@@ -35,6 +34,7 @@ public class HomePage extends BasePage {
                 .setText(text)
                 .pressKey(Keys.ENTER);
 
-        return this;
+        String URL = driver.getCurrentUrl();
+        return new SearchResultPage(driver, wait, URL);
     }
 }
