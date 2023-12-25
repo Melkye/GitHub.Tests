@@ -10,11 +10,8 @@ import org.openqa.selenium.Keys;
 
 public class BaseElement {
     protected String xPath;
-    // TODO change for browser?
     protected WebDriver driver;
-    // TODO use implicit wait defined in webDriver?
-    // TODO why no?
-    // TODO implicit vs explicit
+    // TODO use implicit wait defined in webDriver? why no? implicit vs explicit
     protected WebDriverWait wait;
     public BaseElement(WebDriver driver, WebDriverWait wait, String xPath) {
         this.driver = driver;
@@ -28,18 +25,6 @@ public class BaseElement {
         driver.findElement(By.xpath(xPath)).click();
 
         return this;
-    }
-
-    // TODO make this work
-    public boolean isVisible() {
-
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-        }
-        catch (Exception ElementNotInteractableException) {
-            return false;
-        }
-        return true;
     }
 
     public BaseElement pressKey(Keys key) {
