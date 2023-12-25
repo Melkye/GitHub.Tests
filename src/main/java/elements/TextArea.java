@@ -14,6 +14,10 @@ public class TextArea extends BaseElement {
     public String getText() {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
 
-        return driver.findElement(By.xpath(xPath)).getAttribute("value");
+        String text = driver.findElement(By.xpath(xPath)).getAttribute("value");
+
+        logger.info(String.format("Got text from textarea. XPath: %s. Text: %s", xPath, text));
+
+        return text;
     }
 }

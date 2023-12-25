@@ -32,6 +32,7 @@ public class LoginPage extends BasePage {
         getPasswordInput().setText(password);
         getSignInButton().click();
 
+        logger.info("Logged in.");
         // TODO decide what to do if not logged in
         return new HomePage(driver, wait, true);
     }

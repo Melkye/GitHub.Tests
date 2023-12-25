@@ -37,6 +37,8 @@ public class RepoUITest extends BaseUITest {
 
         String fileTestAreaValue = filePage.getFileContent();
 
+        // TODO print dependencies to console
+
         Assert.assertTrue(fileTestAreaValue.contains(dependency));
         // TODO decide how to close window
         driver.close();

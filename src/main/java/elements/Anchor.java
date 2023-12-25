@@ -11,9 +11,12 @@ public class Anchor extends BaseElement {
     }
 
     // TODO decide what to do when repo not found
+    // TODO add exceptions
     public String go() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
         driver.findElement(By.xpath(xPath)).click();
+
+        logger.info(String.format("Went to anchor. XPath: %s", xPath));
 
         return driver.getCurrentUrl();
     }

@@ -15,6 +15,8 @@ public class Input extends BaseElement {
 
         driver.findElement(By.xpath(xPath)).sendKeys(text);
 
+        logger.info(String.format("Set text to input. XPath: %s. Text: %s", xPath, text));
+
         return this;
     }
 }
