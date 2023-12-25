@@ -6,10 +6,6 @@ import org.testng.annotations.Test;
 import pages.*;
 
 public class RepoUITest extends BaseUITest {
-
-    // TODO move this out to separate file?
-    // TODO configure env loading into class in before test
-    // static constructor
     @DataProvider(name = "searchDataProvider")
     public Object[][] createData1() {
         return new Object[][] {
@@ -31,8 +27,7 @@ public class RepoUITest extends BaseUITest {
 
         LoginPage page = new LoginPage(driver, wait);
 
-        // TODO move out login data to separate class
-        HomePage homePage = page.login("AbubaAbubakar", "otpbank1234");
+        HomePage homePage = page.login(envReader.getUsername(),envReader.getPassword());
 
         SearchResultPage searchResultPage = homePage.searchText(searchText);
 
@@ -42,9 +37,8 @@ public class RepoUITest extends BaseUITest {
 
         String fileTestAreaValue = filePage.getFileContent();
 
-        // TODO use assertion library like FluentAssertions
         Assert.assertTrue(fileTestAreaValue.contains(dependency));
-
+        // TODO decide how to close window
         driver.close();
     }
 }
