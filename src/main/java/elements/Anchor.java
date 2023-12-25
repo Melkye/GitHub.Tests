@@ -9,9 +9,6 @@ public class Anchor extends BaseElement {
     public Anchor(WebDriver driver, WebDriverWait wait, String xPath) {
         super(driver, wait, xPath);
     }
-
-    // TODO decide what to do when repo not found
-    // TODO add exceptions
     public String go() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
         driver.findElement(By.xpath(xPath)).click();

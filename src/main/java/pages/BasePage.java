@@ -18,7 +18,6 @@ public abstract class BasePage {
         this.wait = wait;
         this.URL = URL;
 
-        // TODO decide if this really needed in pages
         logger = LogManager.getLogger();
     }
 }

@@ -14,28 +14,27 @@ public class LoginPage extends BasePage {
 
     private Input getUsernameInput() {
         return new Input("//input[@id='login_field']",
-        driver, wait);
-    };
+                driver, wait);
+    }
 
     private Input getPasswordInput() {
         return new Input("//input[@id='password']",
                 driver, wait);
-    };
+    }
 
     private Button getSignInButton() {
         return new Button("//input[@data-signin-label='Sign in']",
                 driver, wait);
-    };
+    }
 
     public HomePage login(String username, String password) {
+        logger.info("Entering login method");
+
         getUsernameInput().setText(username);
         getPasswordInput().setText(password);
         getSignInButton().click();
 
-        logger.info("Logged in.");
-        // TODO decide what to do if not logged in
-        return new HomePage(driver, wait, true);
+        logger.info("Leaving login method");
+        return new HomePage(driver, wait);
     }
-
-
 }
