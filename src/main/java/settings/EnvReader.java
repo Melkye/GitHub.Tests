@@ -2,17 +2,18 @@ package settings;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class EnvReader {
-    private final Dotenv dotenv;
-    public EnvReader() {
-        dotenv = Dotenv.configure().directory("src/main/java/settings").load();
-    }
+public  class EnvReader {
+    private static final Dotenv dotenv = Dotenv.configure().directory("src/main/java/settings").load();
 
-    public String getUsername() {
+    public static String getUsername() {
         return dotenv.get("gitHub_username");
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return dotenv.get("gitHub_password");
+    }
+
+    public static boolean getIsHeadless() {
+        return Boolean.parseBoolean(dotenv.get("isHeadless"));
     }
 }
