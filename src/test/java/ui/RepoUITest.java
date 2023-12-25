@@ -9,11 +9,9 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
-
-import java.util.Dictionary;
+import settings.EnvReader;
 
 public class RepoUITest extends BaseUITest {
-    // TODO change repo title when switch to another acc
     @DataProvider(name = "searchDataProvider")
     public Object[][] createData1() {
         return new Object[][] {
@@ -28,7 +26,7 @@ public class RepoUITest extends BaseUITest {
 
         LoginPage page = new LoginPage(driver, wait);
 
-        HomePage homePage = page.login(envReader.getUsername(), envReader.getPassword());
+        HomePage homePage = page.login(EnvReader.getUsername(), EnvReader.getPassword());
 
         SearchResultPage searchResultPage = homePage.searchText(searchText);
 
@@ -39,11 +37,8 @@ public class RepoUITest extends BaseUITest {
         String fileTextAreaValue = filePage.getFileContent();
 
         HashMap<String, String> dependencies = parseDependencies(fileTextAreaValue);
-        // TODO print dependencies to console
 
         Assert.assertEquals(dependencies.get(dependencyTitle), dependencyVersion);
-        // TODO decide how to close window
-        driver.close();
     }
 
     private HashMap<String, String> parseDependencies(String fileTextAreaValue) {
